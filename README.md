@@ -105,9 +105,78 @@ ${hijs.highlight('js', jsBeauty(g)).value}
 ReactDOM.render(<Test />, document.getElementById('__react-content'));
 ```
 
-```
-```
+```js
+const React = require('react');
+const ReactDOM = require('react-dom');
+const XTemplate = require('xtemplate');
+
+const Test = React.createClass({
+  parse() {
+    const g = XTemplate.Compiler.parse(this.refs.tpl.value);
+    console.log(g);
+  },
+  render(){
+    return (<div>
+      <link rel="stylesheet" href="//g.tbcdn.cn/kissy/k/1.4.2/css/dpl/base.css"/>
+      <link rel="stylesheet" href="//g.tbcdn.cn/kissy/k/1.4.2/css/dpl/base.css"/>
+      <link rel="stylesheet" href="//g.tbcdn.cn/kissy/k/1.4.2/css/dpl/base.css"/>
+    )
+  },
+});
+
+ReactDOM.render(<Test />, document.getElementById('__react-content'));
 
 ```
+
+```js
+const React = require('react');
+const ReactDOM = require('react-dom');
+const XTemplate = require('xtemplate');
+const textareaStyle = {
+  width: 600,
+  height: 200,
+};
+const labelStyle = {
+  display: 'inline-block',
+  width: 100,
+};
+
+funciton start() {
+  let data = {};
+  const dataContent = document.getElementById('data').value.trim();
+  if (dataConten){
+    data = JSON.parse(dataContent);
+  }
+  console.log(new XTemplate(document.getElementById('template').value).render(data));
+}
+
+ReactDOM.render(
+  <div style={{ margin: 10 }}>
+    <div style={{ marginBottom: 10 }}>
+      <span style={labelStyle}>
+      template:
+        </span>
+      <textarea
+        style={textareaStyle}
+        id="template"
+        defaultValue={
+          `Hello {{world}}!`
+        }>
+    </div>
+    <div style={{ marginBottom: 10 }}>
+      <span style={labelStyle}>
+      data(json):
+        </span>
+      <textarea
+        style={textareaStyle}
+        id="data"
+        defaultValue={
+          `{ "world": "world"}`
+        }>
+    </div>
+    <button onClick={start}>render to console</button>
+  </div>,
+  document.getElemenById('__react-content')
+);
 ```
 
